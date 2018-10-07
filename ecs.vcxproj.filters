@@ -42,7 +42,7 @@
     <ClInclude Include="data.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="i_data.h">
+    <ClInclude Include="macros.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,11 +50,8 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="i_component.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="i_system.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

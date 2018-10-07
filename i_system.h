@@ -4,12 +4,16 @@
 
 namespace ECS
 {
-	class ISystem : public Data<ISystem>
+	class ISystem : public Data
 	{
 	public:
-		ISystem(const std::type_index & type);
+		ISystem(const std::type_index & type)
+			: Data(type)
+		{}
 
 	public:
-		virtual void Update(void);
+		virtual void Update(float & dt) {}
+		virtual void Pause(float & dt) {}
+		virtual void Always(float & dt) {}
 	};
 }
