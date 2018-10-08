@@ -26,17 +26,27 @@ namespace ECS
 		EntityManager * entity_manager_;
 
 	public:
-		template<class _Component>
-		_Component * const GetComponent(void)
+		template<class _COMPONENT>
+		_COMPONENT * const GetComponent(void)
 		{
-			if (this->component_list_.find(typeid(_Component)) != this->component_list_.end())
+			auto itr = this->component_list_.find(typeid(_COMPONENT));
+			if (itr != this->component_list_.end())
 			{
-				
+				auto component_id = (*itr).second;
+				return this->component_manager_->GetById<_COMPONENT>(component_id);
 			}
 			else
 			{
 				return nullptr;
 			}
+		}
+
+		template<class _COMPONENT, class ... _ARGS>
+		_COMPONENT * const AddComponent(const _ARGS &... args)
+		{
+			auto component = this->component_manager_->Add<_COMPONENT>(args ...);
+			auto component_id = component->id();
+			this->component_list_[typeid(_COMPONENT)] = component_id;
 		}
 	};
 }
